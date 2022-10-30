@@ -1,0 +1,42 @@
+.app__controls {
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.hoverable-mixin {
+    cursor: pointer !important;
+    transition: background-color 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+    background: none;
+}
+
+.hoverable-mixin:hover {
+    background: var(--ds-background-neutral-subtle-hovered,rgba(9,30,66,0.08));
+    text-decoration: inherit;
+    transition-duration: 0s, 0.15s;
+    color: var(--ds-text,#42526E) !important;
+}
+
+.hoverable-mixin:focus-within {
+    background: none;
+    box-shadow: 0 0 0 2px var(--ds-border-focused,#4C9AFF);
+    transition-duration: 0s, 0.2s;
+    outline: none;
+    color: var(--ds-text,#42526E) !important;
+}
+
+.hoverable-mixin:active {
+    background: var(--ds-background-neutral-subtle-pressed,rgba(179,212,255,0.6));
+    transition-duration: 0s, 0s;
+    color: var(--ds-text,#0052CC) !important;
+}
+
+@keyframes jnt-settle-in {
+    0% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

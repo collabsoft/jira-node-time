@@ -1,0 +1,77 @@
+.jnt-dropper {
+  display: inline-block;
+  position: relative;
+}
+
+.jnt-dropper > button {
+    display: inline-flex;
+    align-items: center;
+
+    border-width: 0px;
+    border-radius: 3px;
+    box-sizing: border-box;
+
+    font-size: inherit;
+    font-style: normal;
+    font-family: inherit;
+    font-weight: 500;
+
+    max-width: 100%;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    height: 2.28571em;
+    line-height: 2.28571em;
+    padding: 0px 10px;
+    vertical-align: middle;
+    width: auto;
+    justify-content: center;
+    color: var(--ds-text,#42526E) !important;
+}
+
+.jnt-dropper > button > img {
+    margin-right: 5px;
+}
+
+.jnt-dropper > button[aria-expanded=true] {
+    background: var(--ds-background-selected,#253858);
+    color: var(--ds-text-selected,#F4F5F7) !important;
+}
+
+.jnt-dropper > main {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: rgb(9 30 66 / 25%) 0px 4px 8px -2px, rgb(9 30 66 / 31%) 0px 0px 1px;
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+
+    animation: jnt-settle-in 0.2s ease-out 0s 1 normal forwards;
+}
+
+.jnt-dropper > main[aria-hidden=true] {
+    display: none;
+}
+
+.jnt-dropper > main input[type=radio] {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.jnt-dropper > main > label {
+    padding: 5px 12px;
+}
+
+.jnt-dropper > main > label.selected {
+    font-weight: 600;
+    background: var(--ds-background-neutral-subtle-pressed,rgba(179,212,255,0.6));
+    transition-duration: 0s, 0s;
+    color: var(--ds-text,#0052CC) !important;
+}

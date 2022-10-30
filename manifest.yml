@@ -1,0 +1,20 @@
+modules:
+  jira:projectPage:
+    - key: jira-node-time-hello-world-project-page
+      resource: main
+      resolver:
+        function: resolver
+      title: Jira Node Time
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+    tunnel:
+      port: 3000
+app:
+  id: ari:cloud:ecosystem::app/a1585cde-1ca6-4765-8d9b-032c989273d9
+permissions:
+  scopes:
+    - read:jira-work
