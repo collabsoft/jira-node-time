@@ -30,21 +30,23 @@ async function fetchSlice(issueKey) {
 }
 
 function App() {
-    const [activeEpic, setActiveEpic] = useState('MP-6');
-    
+    const [activeEpic, setActiveEpic] = useState(/** @type {string|null} */(null));
+
+    const [possibleEpics, setPossibleEpics] = useState(/** @type {Array|null} */(null));
+    useEffect(async () => {
+        const resp = await fetchEpics(['key', 'summary']);
+        setPossibleEpics(resp.issues);
+        setActiveEpic(resp.issues[0].key);
+    });
+
     const [activeIssues, setActiveIssues] = useState([]);
     useEffect(async () => {
+        if (!activeEpic) return;
         console.log(`Fetching slice for ${activeEpic}`);
         const resp = await fetchSlice(activeEpic);
         setActiveIssues(resp.issues);
     }, [activeEpic]);
     
-    const [possibleEpics, setPossibleEpics] = useState(/** @type {Array|null} */(null));
-    useEffect(async () => {
-        const resp = await fetchEpics(['key', 'summary']);
-        setPossibleEpics(resp.issues);
-    });
-
     return (
         <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
             <div className="app__controls">
@@ -53,7 +55,7 @@ function App() {
                     icon="https://api.atlassian.com/ex/jira/54ac5212-e260-465b-8d41-2628d6d8de8e/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium"
                     value={activeEpic}
                     onChange={setActiveEpic}
-                    loading={!possibleEpics}
+                    loading={!possibleEpics || !activeEpic}
                     options={possibleEpics?.map(issue => ({
                         value: issue.key,
                         label: issue.fields.summary,
