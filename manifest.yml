@@ -1,6 +1,6 @@
 modules:
   jira:projectPage:
-    - key: jira-node-time-hello-world-project-page
+    - key: jira-node-time-project-page
       resource: main
       resolver:
         function: resolver
@@ -10,7 +10,7 @@ modules:
       handler: index.handler
 resources:
   - key: main
-    path: static/hello-world/build
+    path: static/node-time/build
     tunnel:
       port: 3000
 app:
