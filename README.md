@@ -4,7 +4,7 @@ This project contains a Forge app written in Javascript that displays a node gra
 
 See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/platform/forge) for documentation and tutorials explaining Forge.
 
-ThHis was found...
+This was found...
 https://devpost.com/software/node-time
 
 ## Requirements
